@@ -95,7 +95,7 @@ img {
     min-height: 520px;
     display: flex;
     align-items: center;
-    background: linear-gradient(105deg, rgba(55, 35, 25, .84), rgba(122, 79, 53, .55)), url('images/main-banner.png') center/cover no-repeat;
+    background: linear-gradient(105deg, rgba(55, 35, 25, .84), rgba(122, 79, 53, .55)), url('images/main/main-banner.png') center/cover no-repeat;
     color: #fff
 }
 
@@ -364,6 +364,28 @@ section {
     border: 1px solid var(--line)
 }
 
+.casePhotos {
+    margin: 20px 0
+}
+
+.casePhotos .photoBlock:first-child {
+    margin-top: 0
+}
+
+.caseGallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px
+}
+
+.caseGallery img {
+    height: 220px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+    border: 1px solid var(--line)
+}
+
 .areaLinks {
     display: flex;
     flex-wrap: wrap;
@@ -556,6 +578,10 @@ textarea {
 
     .gallery {
         grid-template-columns: repeat(2, 1fr)
+    }
+
+    .caseGallery {
+        grid-template-columns: 1fr
     }
 
     .formGrid {

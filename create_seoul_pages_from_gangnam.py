@@ -1,5 +1,6 @@
 from pathlib import Path
 import re
+import random
 
 # 사용법:
 # 1) 이 파일을 seoul-gajogae-yupum 폴더 안에 넣기
@@ -68,19 +69,25 @@ nearby = {
 
 slug_by_name = dict(districts)
 
-photo_sets = [
-    ([3, 7, 12, 18], [4, 9, 15, 22]),
-    ([5, 11, 19, 24], [3, 8, 16, 23]),
-    ([2, 9, 17, 26], [5, 10, 18, 24]),
-    ([4, 13, 21, 29], [2, 11, 19, 25]),
-    ([6, 14, 22, 30], [6, 12, 20, 26]),
-    ([1, 8, 16, 27], [7, 13, 21, 25]),
-    ([10, 15, 23, 28], [1, 14, 22, 26]),
-    ([3, 11, 20, 25], [4, 15, 23, 24]),
-]
+MAIN_BEFORE = list(range(1, 31))
+MAIN_PROCESS = list(range(1, 26))
+MAIN_AFTER = [n for n in range(1, 31) if n != 21]
+
+
+def pick_main_gallery(idx, count=4):
+    rng = random.Random(1000 + idx)
+    return (
+        rng.sample(MAIN_BEFORE, count),
+        rng.sample(MAIN_PROCESS, count),
+        rng.sample(MAIN_AFTER, count),
+    )
 
 def two(n: int) -> str:
     return f"{n:02d}"
+
+
+def three(n: int) -> str:
+    return f"{n:03d}"
 
 def build_nearby_links(region_name: str) -> str:
     links = []
@@ -106,19 +113,19 @@ def replace_area_links_block(html: str, region_name: str) -> str:
     return html[:section_match.start()] + section2 + html[section_match.end():]
 
 def replace_photos(html: str, region_name: str, idx: int) -> str:
-    before_nums, process_nums = photo_sets[idx % len(photo_sets)]
+    before_nums, process_nums, after_nums = pick_main_gallery(idx)
 
     before_imgs = "\n".join(
-        f'            <img src="images/before-{two(n)}.jpg" alt="{region_name} 유품정리 작업 전 사진 {i+1}">'
+        f'            <img src="images/main/before-{two(n)}.jpg" alt="{region_name} 유품정리 작업 전 사진 {i+1}">'
         for i, n in enumerate(before_nums)
     )
     process_imgs = "\n".join(
-        f'            <img src="images/process-{two(n)}.jpg" alt="{region_name} 유품정리 작업 중 사진 {i+1}">'
+        f'            <img src="images/main/process-{two(n)}.jpg" alt="{region_name} 유품정리 작업 중 사진 {i+1}">'
         for i, n in enumerate(process_nums)
     )
     after_imgs = "\n".join(
-        f'            <img src="images/after-{two(n)}.jpg" alt="{region_name} 유품정리 작업 후 사진 {i+1}">'
-        for i, n in enumerate(before_nums)
+        f'            <img src="images/main/after-{two(n)}.jpg" alt="{region_name} 유품정리 작업 후 사진 {i+1}">'
+        for i, n in enumerate(after_nums)
     )
 
     gallery_pattern = r'<div class="gallery">\s*.*?\s*</div>'
