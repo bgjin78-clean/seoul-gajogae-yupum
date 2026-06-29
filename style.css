@@ -407,6 +407,148 @@ section {
     color: #fff
 }
 
+.seoSection {
+    background: #fff
+}
+
+.seoContent h3 {
+    font-size: 22px;
+    margin: 28px 0 12px;
+    letter-spacing: -.04em;
+    color: var(--brandDark)
+}
+
+.seoContent p {
+    color: var(--muted);
+    margin: 0 0 14px
+}
+
+.seoList {
+    background: var(--soft);
+    border-radius: 16px;
+    padding: 20px 24px 20px 36px;
+    margin: 0 0 14px;
+    color: #4b3b30
+}
+
+.seoList li {
+    margin-bottom: 6px
+}
+
+.caseGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px
+}
+
+.caseCard {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 24px rgba(65, 45, 28, .06)
+}
+
+.caseCard img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover
+}
+
+.caseCard div {
+    padding: 22px
+}
+
+.caseLabel {
+    display: inline-block;
+    background: var(--soft);
+    border-radius: 999px;
+    padding: 5px 11px;
+    font-size: 13px;
+    font-weight: 900;
+    color: var(--brand);
+    margin-bottom: 10px
+}
+
+.caseCard h3 {
+    margin: 0 0 10px;
+    font-size: 20px;
+    letter-spacing: -.04em
+}
+
+.caseCard p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 15px
+}
+
+.reviewSection {
+    background: var(--soft)
+}
+
+.reviewGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px
+}
+
+.reviewCard {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 24px
+}
+
+.reviewStars {
+    color: var(--brand2);
+    letter-spacing: 1px;
+    font-weight: 900;
+    margin-bottom: 12px
+}
+
+.reviewCard p {
+    margin: 0 0 14px;
+    color: var(--muted)
+}
+
+.reviewCard strong {
+    color: var(--brandDark);
+    font-size: 15px
+}
+
+.backlinkGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px
+}
+
+.backlinkGrid a {
+    display: block;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 22px;
+    transition: border-color .2s, box-shadow .2s
+}
+
+.backlinkGrid a:hover {
+    border-color: var(--brand2);
+    box-shadow: 0 10px 24px rgba(65, 45, 28, .08)
+}
+
+.backlinkGrid strong {
+    display: block;
+    font-size: 18px;
+    color: var(--brandDark);
+    margin-bottom: 8px
+}
+
+.backlinkGrid span {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.5
+}
+
 .faq details {
     background: #fff;
     border: 1px solid var(--line);
@@ -558,7 +700,13 @@ textarea {
 
     .grid4,
     .priceGrid,
-    .processGrid {
+    .processGrid,
+    .caseGrid,
+    .reviewGrid {
+        grid-template-columns: 1fr 1fr
+    }
+
+    .backlinkGrid {
         grid-template-columns: 1fr 1fr
     }
 }
@@ -572,7 +720,10 @@ textarea {
     .grid3,
     .grid4,
     .priceGrid,
-    .processGrid {
+    .processGrid,
+    .caseGrid,
+    .reviewGrid,
+    .backlinkGrid {
         grid-template-columns: 1fr
     }
 
